@@ -37,11 +37,11 @@ public class GrHardwareService extends Activity implements SdrHwSetupReceiver.Re
                 break;
             case 1:
                 Log.d("SdrHwSetup", "Service Finished");
-                //finish();
+                finish();
                 break;
             case -1:
                 Log.d("SdrHwSetup", "Service Error");
-                //finish();
+                finish();
                 break;
         }
     }

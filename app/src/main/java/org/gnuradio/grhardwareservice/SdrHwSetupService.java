@@ -94,6 +94,7 @@ public class SdrHwSetupService extends IntentService {
             mNotificationManager.notify(notifyID, mBuilder.build());
             Log.d("UhdSetupService", "Could not create a connection to USB device");
             Toast.makeText(getApplicationContext(), "Could not create a connection to USB device!", Toast.LENGTH_LONG).show();
+            return;
         }
 
         fd = connection.getFileDescriptor();
@@ -113,14 +114,21 @@ public class SdrHwSetupService extends IntentService {
             Log.d("UhdSetupService", "B200 firmware not loaded; loading.");
             UHDLoadFirmware(fd, usbfs_path);
         } else if (fw_loaded == 1) {
-            mBuilder.setContentText("B200 firmware loaded; now loading FPGA image.");
-            mNotificationManager.notify(notifyID, mBuilder.build());
-            Log.d("UhdSetupService", "B200 firmware loaded; now loading FPGA image.");
-            UHDMakeDevice(fd, usbfs_path);
-            mNotificationManager.cancel(notifyID);
-            Log.d("UhdSetupService", "B200 FPGA image loaded. B200 is ready.");
-            Toast.makeText(getApplicationContext(), "B200 Ready", Toast.LENGTH_LONG).show();
-            ready = true;
+            int fpga_ready = IsUHDFPGAReady(vid, pid, fd, usbfs_path);
+            if(fpga_ready == 1) {
+                ready = true;
+                return;
+            }
+            else {
+                mBuilder.setContentText("B200 firmware loaded; now loading FPGA image.");
+                mNotificationManager.notify(notifyID, mBuilder.build());
+                Log.d("UhdSetupService", "B200 firmware loaded; now loading FPGA image.");
+                UHDMakeDevice(fd, usbfs_path);
+                mNotificationManager.cancel(notifyID);
+                Log.d("UhdSetupService", "B200 FPGA image loaded. B200 is ready.");
+                Toast.makeText(getApplicationContext(), "B200 Ready", Toast.LENGTH_LONG).show();
+                ready = true;
+            }
         } else {
             mBuilder.setContentText("B200 Firmware check returned unknown code.");
             mNotificationManager.notify(notifyID, mBuilder.build());
@@ -185,6 +193,7 @@ public class SdrHwSetupService extends IntentService {
 
     public native static void UnPackUhdImages(AssetManager amanager);
     public native static int IsUHDFirmwareLoaded(int vid, int pid, int fd, String devname);
+    public native static int IsUHDFPGAReady(int vid, int pid, int fd, String devname);
     public native static void UHDLoadFirmware(int fd, String devname);
     public native static void UHDMakeDevice(int fd, String devname);
 
