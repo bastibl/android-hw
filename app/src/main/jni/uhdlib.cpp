@@ -26,18 +26,7 @@ Java_org_gnuradio_grhardwareservice_SdrHwSetupService_UnPackUhdImages(JNIEnv * e
     char buf[BUFSIZE];
     int nread = 0;
 
-#if 0
-    int r = mkdir("/data/data/org.gnuradio.grhardwareservice/files", 0770);
-    if(r == -1) {
-      GR_INFO("UnPackUhdImages",
-              boost::str(boost::format
-                      ("Failed to create files directory with errno = 1%") % (int)errno));
-      throw std::runtime_error("Failed to create files directory.");
-    }
-#endif
-
     std::stringstream outdir;
-    //outdir << "/data/data/org.gnuradio.grhardwareservice/files/" << filename;
     outdir << "/sdcard/" << filename;
 
     GR_INFO("UnPackUhdImages",
@@ -73,6 +62,8 @@ Java_org_gnuradio_grhardwareservice_SdrHwSetupService_IsUHDFirmwareLoaded(JNIEnv
   args << "uhd,fd=" << fd << ",usbfs_path=" << usbfs_path;
   GR_INFO( "IsUHDFirmwareLoaded" , boost::str(boost::format(
           "Checking if firmware is loaded; Using UHD args=%1%") % args . str())) ;
+GR_INFO( "IsUHDFirmwareLoaded" , boost::str(boost::format(
+        "    vid=%1%  pid=%2%") % vid % pid));
 
   uhd::transport::usb_device_handle::sptr handle;
   std::vector <uhd::transport::usb_device_handle::sptr> handles;
