@@ -1,0 +1,3 @@
+/home/basti/src/android-hw/app/.cxx/cmake/debug/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/home/basti/src/android-hw/app/.cxx/cmake/debug/arm64-v8a/CMakeFiles/edit_cache.dir
+/home/basti/src/android-hw/app/.cxx/cmake/debug/arm64-v8a/CMakeFiles/uhdlib.dir

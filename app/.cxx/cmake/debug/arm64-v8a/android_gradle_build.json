@@ -1,0 +1,42 @@
+{
+  "stringTable": {
+    "0": "/home/basti/src/android-hw/app/.cxx/cmake/debug/arm64-v8a",
+    "1": "--target=aarch64-none-linux-android26 --gcc-toolchain=/home/basti/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/basti/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Duhdlib_EXPORTS -I/home/basti/src/gnuradio-android/toolchain/arm64-v8a/include -I/home/basti/src/gnuradio-android/toolchain/arm64-v8a/include/boost-1_69 -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11 -O0 -fno-limit-debug-info -fPIC"
+  },
+  "buildFiles": [
+    "/home/basti/Android/Sdk/ndk/20.0.5594570/build/cmake/android.toolchain.cmake",
+    "/home/basti/src/android-hw/app/src/main/jni/CMakeLists.txt",
+    "/home/basti/Android/Sdk/ndk/20.0.5594570/build/cmake/platforms.cmake"
+  ],
+  "cleanCommands": [
+    "/home/basti/Android/Sdk/cmake/3.10.2.4988404/bin/ninja -C \"/home/basti/src/android-hw/app/.cxx/cmake/debug/arm64-v8a\" clean"
+  ],
+  "buildTargetsCommand": "/home/basti/Android/Sdk/cmake/3.10.2.4988404/bin/ninja  -C \"/home/basti/src/android-hw/app/.cxx/cmake/debug/arm64-v8a\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "uhdlib-Debug-arm64-v8a": {
+      "buildCommand": "/home/basti/Android/Sdk/cmake/3.10.2.4988404/bin/ninja -C \"/home/basti/src/android-hw/app/.cxx/cmake/debug/arm64-v8a\" uhdlib",
+      "buildType": "debug",
+      "toolchain": "3712768057",
+      "abi": "arm64-v8a",
+      "artifactName": "uhdlib",
+      "files": [
+        {
+          "src": "/home/basti/src/android-hw/app/src/main/jni/uhdlib.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "/home/basti/src/android-hw/app/build/intermediates/cmake/debug/obj/arm64-v8a/libuhdlib.so"
+    }
+  },
+  "toolchains": {
+    "3712768057": {
+      "cppCompilerExecutable": "/home/basti/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

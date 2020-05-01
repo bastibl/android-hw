@@ -1,47 +1,50 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-
-    // SETUP TO USE OUR OWN Android.mk FILE
-    sourceSets.main {
-        jniLibs.srcDirs = ['src/main/libs']
-        jni.srcDirs = [] //disable automatic ndk-build call with auto-generated Android.mk
-    }
-
-    // call regular ndk-build against our Android.mk
-    task ndkBuild(type: Exec) {
-        commandLine 'ndk-build', '-C', file('src/main/jni').absolutePath
-    }
-
-    tasks.withType(JavaCompile) {
-        compileTask -> compileTask.dependsOn ndkBuild
-    }
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
-        applicationId "org.gnuradio.grhardwareservice"
-        minSdkVersion 21
-        targetSdkVersion 23
+        applicationId "net.bastibl.grhardwareservice"
+        minSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11"
+            }
+        }
+        ndk {
+            abiFilters "arm64-v8a"
         }
     }
 
-    packagingOptions {
-        exclude 'lib/armeabi-v7a/*'
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/jni/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['../../gnuradio-android/toolchain/jni', '../../../Android/Sdk/ndk/20.0.5594570/sources/cxx-stl/llvm-libc++/libs']
+        }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:support-v4:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }

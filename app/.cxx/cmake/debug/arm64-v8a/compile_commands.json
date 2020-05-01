@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/basti/src/android-hw/app/.cxx/cmake/debug/arm64-v8a",
+  "command": "/home/basti/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=aarch64-none-linux-android26 --gcc-toolchain=/home/basti/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/basti/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Duhdlib_EXPORTS -I/home/basti/src/gnuradio-android/toolchain/arm64-v8a/include -I/home/basti/src/gnuradio-android/toolchain/arm64-v8a/include/boost-1_69  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/uhdlib.dir/uhdlib.cpp.o -c /home/basti/src/android-hw/app/src/main/jni/uhdlib.cpp",
+  "file": "/home/basti/src/android-hw/app/src/main/jni/uhdlib.cpp"
+}
+]
