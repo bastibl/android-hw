@@ -1,7 +1,0 @@
-Executable : /home/basti/Android/Sdk/cmake/3.10.2.4988404/bin/ninja
-arguments : 
--C
-/home/basti/src/android-hw/app/.cxx/cmake/debug/arm64-v8a
-uhdlib
-jvmArgs : 
-

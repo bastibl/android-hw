@@ -1,7 +1,0 @@
-# ninja log v5
-0	1922	1588340014	CMakeFiles/uhdlib.dir/uhdlib.cpp.o	af30133c7774ae03
-1924	2058	1588340014	/home/basti/src/android-hw/app/build/intermediates/cmake/debug/obj/arm64-v8a/libuhdlib.so	d2d6efe978d893b4
-0	4	0	clean	a72177cb87eb0948
-0	2	0	clean	a72177cb87eb0948
-2	1900	1588340041	CMakeFiles/uhdlib.dir/uhdlib.cpp.o	af30133c7774ae03
-1900	2028	1588340041	/home/basti/src/android-hw/app/build/intermediates/cmake/debug/obj/arm64-v8a/libuhdlib.so	d2d6efe978d893b4
